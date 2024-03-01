@@ -20,5 +20,5 @@ jobs:
 
    - run: docker push givepeasachance/multi-client
    - run: docker push givepeasachance/multi-nginx
-   - run: docker push givepeasachance/muti-server
+   - run: docker push givepeasachance/multi-server
    - run: dokcer push givepeasachance/multi-worker
