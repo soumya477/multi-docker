@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t givepeasachance/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true givepeasachance/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t givepeasachance/multi-client ./client
+  - docker build -t givepeasachance/multi-nginx ./nginx 
+  - docker build -t givepeasachance/multi-server ./server
+  - docker build -t givepeasachance/multi-worker ./worker
